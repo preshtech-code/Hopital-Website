@@ -6,6 +6,8 @@
 # tests and builds
 /coverage
 /.next
+/.open-next
+/.wrangler
 /out
 /dist
 
