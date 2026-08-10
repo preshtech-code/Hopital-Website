@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "project": {
+    "name": "St. Peter’s Hospital Website",
+    "productType": "single-page specialist hospital website",
+    "stack": ["Next.js App Router", "TypeScript", "Tailwind CSS", "React"]
+  },
+  "sources": {
+    "tokens": ["src/app/globals.css"],
+    "components": ["src/components/hospital-website.tsx", "src/components/appointment-form.tsx"],
+    "assets": ["public/images"],
+    "instructions": ["User-approved implementation plan"]
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "primary": "#082b4c",
+      "accent": "#008eaa",
+      "surface": "#f5f9fb",
+      "text": "#17324d",
+      "muted": "#5f7284"
+    },
+    "typography": { "family": "Inter/system sans-serif", "headingStyle": "compact, high-contrast, modern" },
+    "spacing": { "sectionDesktop": "112px", "sectionMobile": "72px" },
+    "radius": { "small": "10px", "medium": "18px", "large": "28px" },
+    "shadows": { "card": "subtle navy-tinted elevation", "feature": "deep soft elevation" },
+    "motion": { "duration": "200-350ms", "reducedMotion": "required" },
+    "density": "comfortable"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": ["semantic HTML", "native dialog", "lucide-react icons"],
+    "patterns": ["sticky anchor navigation", "split hero", "service matrix", "profile cards", "contact hub"]
+  },
+  "constraints": {
+    "must": [
+      "English-only single page",
+      "Mobile-first and WCAG 2.2 AA-minded",
+      "Appointment request must never imply a confirmed booking",
+      "Emergency calling must be more prominent than WhatsApp",
+      "Placeholder clinical content must remain clearly identified"
+    ],
+    "avoid": [
+      "Decorative gradients",
+      "Unverified clinical claims or statistics",
+      "Doctor ratings or availability claims",
+      "Medical-history collection",
+      "Excessive animation, glass effects, and oversized novelty typography"
+    ]
+  },
+  "decisions": [
+    {
+      "date": "2026-08-10",
+      "decision": "Use the user-selected Modern Specialist Care direction",
+      "details": "Crisp white and pale blue surfaces, deep navy structure, cyan interaction accents, editorial healthcare photography, compact professional typography, and restrained motion."
+    },
+    {
+      "date": "2026-08-10",
+      "decision": "Use 21st references as structural inspiration only",
+      "details": "Adapted modern hero, doctor profile, About, and contact-hub hierarchy without live chat, ratings, or full booking behavior."
+    }
+  ],
+  "evidence": [
+    "21st Modern Landing Hero",
+    "21st DoctorLiveChatCard (profile hierarchy only)",
+    "21st About 3",
+    "21st Contact Page"
+  ],
+  "generatedAt": "2026-08-10T12:47:58.415Z"
+}
