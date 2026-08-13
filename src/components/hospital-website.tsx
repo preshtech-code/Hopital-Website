@@ -53,9 +53,7 @@ const serviceIcons = {
 function Brand() {
   return (
     <a className="brand" href="#top" aria-label="St Peters Hospitals and Medcare Ltd home">
-      <span className="brand-mark" aria-hidden="true">
-        <Image src="/images/st-peters-logo.jpg" fill sizes="52px" alt="" />
-      </span>
+      <span className="brand-mark" aria-hidden="true" />
       <span className="brand-wordmark"><strong>St Peters Hospitals</strong><small>and Medcare Ltd</small></span>
     </a>
   );

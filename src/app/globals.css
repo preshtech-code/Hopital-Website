@@ -66,8 +66,7 @@ p { color: var(--muted); line-height: 1.75; }
 .site-header { position: sticky; top: 0; z-index: 80; background: rgba(255,255,255,.97); border-bottom: 1px solid rgba(219,230,220,.92); backdrop-filter: blur(14px); }
 .header-inner { min-height: 84px; display: flex; align-items: center; gap: 26px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; }
-.brand-mark { width: 52px; height: 52px; flex: 0 0 auto; position: relative; overflow: hidden; background: white; border: 1px solid var(--line); border-radius: 14px; }
-.brand-mark img { object-fit: cover; transform: scale(2.3) translateY(13%); }
+.brand-mark { width: 52px; height: 52px; flex: 0 0 auto; overflow: hidden; background: white url("/images/st-peters-logo.jpg") 50% 27% / 230% auto no-repeat; border: 1px solid var(--line); border-radius: 14px; }
 .brand > span:last-child { display: flex; flex-direction: column; line-height: 1; }
 .brand strong { color: var(--navy-950); font-family: var(--font-source-serif), Georgia, serif; font-size: 1.04rem; font-weight: 650; letter-spacing: -0.02em; }
 .brand small { margin-top: 6px; color: var(--cyan-600); font-size: 0.62rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
