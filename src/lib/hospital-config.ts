@@ -20,8 +20,8 @@ export type GalleryImage = {
 };
 
 export const hospitalConfig = {
-  name: "St. Peter’s Hospital",
-  shortName: "St. Peter’s",
+  name: "St Peters Hospitals and Medcare Ltd",
+  shortName: "St Peters Hospitals",
   previewNotice: "Preview website — sample content awaits hospital verification.",
   tagline: "Specialist care, thoughtfully delivered.",
   description:

@@ -52,9 +52,11 @@ const serviceIcons = {
 
 function Brand() {
   return (
-    <a className="brand" href="#top" aria-label="St. Peter’s Hospital home">
-      <span className="brand-mark" aria-hidden="true"><span /></span>
-      <span><strong>St. Peter’s</strong><small>Hospital</small></span>
+    <a className="brand" href="#top" aria-label="St Peters Hospitals and Medcare Ltd home">
+      <span className="brand-mark" aria-hidden="true">
+        <Image src="/images/st-peters-logo.jpg" fill sizes="52px" alt="" />
+      </span>
+      <span className="brand-wordmark"><strong>St Peters Hospitals</strong><small>and Medcare Ltd</small></span>
     </a>
   );
 }
@@ -107,10 +109,47 @@ function GalleryDialog({ item, index }: { item: GalleryImage; index: number }) {
 
 export function HospitalWebsite({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMobileMenu = (restoreFocus = false) => {
+    setMenuOpen(false);
+    if (restoreFocus) requestAnimationFrame(() => menuButtonRef.current?.focus());
+  };
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
     return () => document.body.classList.remove("menu-open");
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    mobileMenuRef.current?.querySelector<HTMLButtonElement>(".mobile-menu-close")?.focus();
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        requestAnimationFrame(() => menuButtonRef.current?.focus());
+        return;
+      }
+
+      if (event.key === "Tab") {
+        const focusable = Array.from(
+          mobileMenuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [],
+        );
+        const first = focusable[0];
+        const last = focusable.at(-1);
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, [menuOpen]);
 
   return (
@@ -130,14 +169,35 @@ export function HospitalWebsite({ turnstileSiteKey }: { turnstileSiteKey: string
             {navItems.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}
           </nav>
           <a className="button button-header" href="#appointment">Request appointment</a>
-          <button className="menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen((value) => !value)}>
-            {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          <button ref={menuButtonRef} className="menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
+            <Menu aria-hidden="true" />
           </button>
         </div>
-        <nav id="mobile-navigation" className={`mobile-nav ${menuOpen ? "is-open" : ""}`} aria-label="Mobile navigation">
-          {navItems.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}<ChevronRight aria-hidden="true" /></a>)}
-          <a className="button button-primary" href="#appointment" onClick={() => setMenuOpen(false)}>Request appointment</a>
-        </nav>
+        <div
+          id="mobile-navigation"
+          className={`mobile-menu ${menuOpen ? "is-open" : ""}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          aria-hidden={!menuOpen}
+          onClick={(event) => {
+            if (event.currentTarget === event.target) closeMobileMenu(true);
+          }}
+        >
+          <div className="mobile-menu-panel" ref={mobileMenuRef}>
+            <div className="mobile-menu-heading">
+              <Brand />
+              <button type="button" className="mobile-menu-close" aria-label="Close menu" onClick={() => closeMobileMenu(true)}>
+                <X aria-hidden="true" />
+              </button>
+            </div>
+            <nav className="mobile-nav" aria-label="Mobile navigation">
+              {navItems.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}<ChevronRight aria-hidden="true" /></a>)}
+            </nav>
+            <a className="button button-primary mobile-menu-cta" href="#appointment" onClick={() => setMenuOpen(false)}>Request appointment <ArrowRight aria-hidden="true" /></a>
+            <a className="mobile-menu-emergency" href={`tel:${hospitalConfig.emergencyPhoneHref}`} onClick={() => setMenuOpen(false)}><Phone aria-hidden="true" /> Emergency: {hospitalConfig.emergencyPhoneDisplay}</a>
+          </div>
+        </div>
       </header>
 
       <main id="main-content">
@@ -289,7 +349,7 @@ export function HospitalWebsite({ turnstileSiteKey }: { turnstileSiteKey: string
           <div><h2>Patient links</h2><a href="#appointment">Request appointment</a><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp enquiry</a><a href="#contact">Map & directions</a><a href="mailto:privacy@example-hospital.com">Privacy enquiries</a></div>
           <div><h2>Emergency</h2><p>Emergency Department<br />Open 24 hours, every day</p><a className="footer-emergency" href={`tel:${hospitalConfig.emergencyPhoneHref}`}>{hospitalConfig.emergencyPhoneDisplay}</a></div>
         </div>
-        <div className="shell footer-bottom"><p>© {new Date().getFullYear()} St. Peter’s Hospital. Preview website.</p><p>Temporary photography sourced for design review and must be replaced before launch.</p></div>
+        <div className="shell footer-bottom"><p>© {new Date().getFullYear()} {hospitalConfig.name}. Preview website.</p><p>Temporary photography sourced for design review and must be replaced before launch.</p></div>
       </footer>
 
       <a className="whatsapp-float" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Open WhatsApp for a general enquiry"><MessageCircle aria-hidden="true" /><span>Chat with us</span></a>

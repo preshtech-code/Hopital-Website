@@ -1,7 +1,7 @@
 {
   "version": 1,
   "project": {
-    "name": "St. Peter’s Hospital Website",
+    "name": "St Peters Hospitals and Medcare Ltd Website",
     "productType": "single-page specialist hospital website",
     "stack": ["Next.js App Router", "TypeScript", "Tailwind CSS", "React"]
   },
@@ -14,23 +14,23 @@
   "design": {
     "colorMode": "light",
     "colors": {
-      "primary": "#082b4c",
-      "accent": "#008eaa",
-      "surface": "#f5f9fb",
-      "text": "#17324d",
-      "muted": "#5f7284"
+      "primary": "#082d1d",
+      "accent": "#58ac2e",
+      "surface": "#f6f9f4",
+      "text": "#1b3429",
+      "muted": "#607269"
     },
-    "typography": { "family": "Inter/system sans-serif", "headingStyle": "compact, high-contrast, modern" },
-    "spacing": { "sectionDesktop": "112px", "sectionMobile": "72px" },
-    "radius": { "small": "10px", "medium": "18px", "large": "28px" },
-    "shadows": { "card": "subtle navy-tinted elevation", "feature": "deep soft elevation" },
+    "typography": { "bodyFamily": "Manrope", "displayFamily": "Source Serif 4", "headingStyle": "editorial, calm, high-contrast" },
+    "spacing": { "sectionDesktop": "108px", "sectionMobile": "64-72px" },
+    "radius": { "small": "12px", "medium": "20px", "large": "30px" },
+    "shadows": { "card": "subtle forest-tinted elevation", "feature": "deep soft elevation" },
     "motion": { "duration": "200-350ms", "reducedMotion": "required" },
     "density": "comfortable"
   },
   "components": {
     "installed": [],
     "preferredPrimitives": ["semantic HTML", "native dialog", "lucide-react icons"],
-    "patterns": ["sticky anchor navigation", "split hero", "service matrix", "profile cards", "contact hub"]
+    "patterns": ["centered desktop navigation", "mobile side sheet", "split hero", "service matrix", "profile cards", "contact hub"]
   },
   "constraints": {
     "must": [
@@ -58,13 +58,24 @@
       "date": "2026-08-10",
       "decision": "Use 21st references as structural inspiration only",
       "details": "Adapted modern hero, doctor profile, About, and contact-hub hierarchy without live chat, ratings, or full booking behavior."
+    },
+    {
+      "date": "2026-08-13",
+      "decision": "Align the visual system with the supplied official logo",
+      "details": "Moved the palette to deep forest and leaf greens, integrated the supplied St Peters Hospitals and Medcare Ltd mark, and paired Source Serif 4 display type with Manrope body type for a warmer clinical identity."
+    },
+    {
+      "date": "2026-08-13",
+      "decision": "Adopt the 21st centered navigation and mobile sheet pattern",
+      "details": "The 21st Centered Nav Header reference informed the desktop hierarchy, 44px-plus targets, dimmed overlay, focus restoration, and right-side mobile navigation sheet."
     }
   ],
   "evidence": [
     "21st Modern Landing Hero",
     "21st DoctorLiveChatCard (profile hierarchy only)",
     "21st About 3",
-    "21st Contact Page"
+    "21st Contact Page",
+    "21st Centered Nav Header"
   ],
-  "generatedAt": "2026-08-10T12:47:58.415Z"
+  "generatedAt": "2026-08-13T00:00:00.000Z"
 }

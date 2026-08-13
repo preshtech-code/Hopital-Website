@@ -1,8 +1,8 @@
-# St. Peter’s Hospital Design Context
+# St Peters Hospitals and Medcare Ltd Design Context
 
 ## Direction
 
-Modern specialist care: deep navy structure, cyan interaction accents, crisp white and pale-blue surfaces, authentic healthcare photography, and restrained motion.
+Modern specialist care rooted in the supplied identity: deep forest structure, leaf-green interaction accents, crisp white and warm off-white surfaces, authentic healthcare photography, and restrained motion. Source Serif 4 gives major headings an assured editorial voice; Manrope keeps navigation, body text, and forms highly readable.
 
 ## Product constraints
 
@@ -15,6 +15,6 @@ Modern specialist care: deep navy structure, cyan interaction accents, crisp whi
 
 ## Reusable patterns
 
-- Sticky anchor navigation and mobile disclosure menu.
+- Sticky anchor navigation and a focused right-side mobile sheet based on the 21st Centered Nav Header pattern.
 - Split editorial hero with primary request CTA and emergency alternative.
 - Structured service matrix, doctor profile cards, accessible gallery dialogs, appointment panel, and contact hub.

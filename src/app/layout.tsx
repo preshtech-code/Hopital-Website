@@ -1,6 +1,19 @@
 import type { Metadata, Viewport } from "next";
+import { Manrope, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { hospitalConfig } from "@/lib/hospital-config";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-source-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://st-peters-hospital.example"),
@@ -26,7 +39,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${manrope.variable} ${sourceSerif.variable}`} suppressHydrationWarning>{children}</body>
     </html>
   );
 }
